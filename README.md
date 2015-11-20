@@ -15,7 +15,7 @@ demo scripts &amp; artifacts for automated wp deployment
 * **T**: add links to other stacks reviewed (samples mostly, ansible and wp have existing start-and-forget AMI builds ready, but I figured that would defeat the purpose of the exercise)
 * **T**: review recipes for potential cleanup, optimization, configurable values
 
-FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is just all I've published so far.
+FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is all I've published so far. https://github.com/wpdemo20151118/aws-demo/blob/master/cm/release/CF/AmazonLinux-AnsibleEc2Instance.template
 
 ## Instance Configuration
 
