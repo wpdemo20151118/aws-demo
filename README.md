@@ -12,21 +12,26 @@ demo scripts &amp; artifacts for automated wp deployment
 * Instance Type: t1.tiny
 * Availability Zone: usa-east-1b
 
+##Ansible Server Setup
+* yum update -y
+* yum install epel-release -y
+* yum install ansible -y
+
 ##Web Server Configuration
 * yum update -y
-* yum install php_mysql mysql-server -y
+* yum install php-mysql mysql-server -y
 * service httpd start
 * service mysqld start
 * mysql_secure_install
-* wget https://wordpress.org/latest.tar.gz
-* tar -xzf latest.tar.gz
-* mv ./wordpress/* /var/www/html/
-* rm ./wordpress
 * mysql> CREATE USER 'wordpress-user'@'localhost' IDENTIFIED BY 'your_strong_password';
 * mysql> CREATE DATABASE `wordpress-db`;
 * mysql> GRANT ALL PRIVILEGES ON `wordpress-db`.* TO "wordpress-user"@"localhost";
 * mysql> FLUSH PRIVILEGES;
 * mysql> exit
+* wget https://wordpress.org/latest.tar.gz
+* tar -xzf latest.tar.gz
+* mv ./wordpress/* /var/www/html/
+* rm ./wordpress
 * usermod -a -G www apache
 * chown -R apache /var/www
 * chgrp -R www /var/www
