@@ -2,7 +2,7 @@
 demo scripts &amp; artifacts for automated wp deployment
 
 ## Overview
-1. Launch instance and configure baseline for Wordpress instance using ansible. Ansible instance will be fired off by CloudFormation.
+1. Launch instance and configure baseline for Wordpress instance using Ansible. Ansible instance will be fired off by CloudFormation.
 2. Configuration data and resources should be stored in version control (Git) and instance-specific information will be supplied during instantiation.
 3. Wordpress and Ansible will exist on separate machine instances in the same new VPC.
 
