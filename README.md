@@ -39,32 +39,6 @@ FYI: I've had various ansible and wp instances running while I was exploring, an
 * yum install epel-release -y
 * yum install ansible -y
 
-##Web Server Configuration
-* yum update -y
-* yum install php-mysql mysql-server -y
-* service httpd start
-* service mysqld start
-* mysql_secure_install
-* mysql> CREATE USER 'wordpress-user'@'localhost' IDENTIFIED BY 'your_strong_password';
-* mysql> CREATE DATABASE `wordpress-db`;
-* mysql> GRANT ALL PRIVILEGES ON `wordpress-db`.* TO "wordpress-user"@"localhost";
-* mysql> FLUSH PRIVILEGES;
-* mysql> exit
-* wget https://wordpress.org/latest.tar.gz
-* tar -xzf latest.tar.gz
-* mv ./wordpress/* /var/www/html/
-* rm ./wordpress
-* usermod -a -G www apache
-* chown -R apache /var/www
-* chgrp -R www /var/www
-* sudo chmod 2775 /var/www
-* find /var/www -type d -exec sudo chmod 2775 {} +
-* find /var/www -type f -exec sudo chmod 0664 {} +
-* service httpd restart
-* chkconfig httpd on
-* chkconfig mysqld on
-* 
-
 ## References
 * Ansible http://docs.ansible.com/ansible/playbooks_best_practices.html
 * Chef http://my.safaribooksonline.com/book/web-development/web-services/9781782173632/9dot-bootstrapping-and-auto-configuration/ch09s03_html
