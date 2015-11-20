@@ -7,6 +7,7 @@ demo scripts &amp; artifacts for automated wp deployment
 3. Wordpress and Ansible will exist on separate machine instances in the same new VPC.
 
 ## Open Issues
+* **Q**: should I put the ansible box in a separate subnet from the wp box?
 * **Q**: the password that's supposed to be entered upon use, is it for the wp box or wordpress or for ssh access to either servers or possibly for ansible's 'tower' web tool?
 * **Q**: the response to my first questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)
 * **T**: complete wp deployment playbook
@@ -14,6 +15,9 @@ demo scripts &amp; artifacts for automated wp deployment
 * **T**: bring server spec & configuration outlines below up to date
 * **T**: add links to other stacks reviewed (samples mostly, ansible and wp have existing start-and-forget AMI builds ready, but I figured that would defeat the purpose of the exercise)
 * **T**: review recipes for potential cleanup, optimization, configurable values
+
+## Powershell
+    PS C:\WINDOWS\system32> New-CFNStack -StackName "ansible-ps-deploy-1" -TemplateURL "https://s3.amazonaws.com/cf-templates-cvfgrhthjkyuiklio/AmazonLinux-AnsibleEc2Instance.template" -Parameters @(@{ParameterKey="KeyPair";ParameterValue="rean"},@{ParameterKey="Password";ParameterValue="0a2z45b67y8"})
 
 FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is all I've published so far. https://github.com/wpdemo20151118/aws-demo/blob/master/cm/release/CF/AmazonLinux-AnsibleEc2Instance.template
 
