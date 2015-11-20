@@ -21,8 +21,8 @@ FYI: I've had various ansible and wp instances running while I was exploring, an
 
 Role | AMI | Type | Zone
 ---|---|---|---
-CM (Ansible) | ami-5fb8c835 (AZL)| t1.micro | us-east-1b
-Web (Wpress) | ami-8997afe0 (Centos)|t1.micro|us-east-1b
+CM (Ansible) | ami-5fb8c835 (AZL) PV 64| t1.micro | us-east-1b
+Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b
 
 ##Ansible Server Initialization
   * yum update -y
