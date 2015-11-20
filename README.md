@@ -12,7 +12,7 @@ demo scripts &amp; artifacts for automated wp deployment
 * **T**: complete wp deployment playbook
 * **T**: test/publish usage instructions
 * **T**: bring server spec & configuration outlines below up to date
-* **T**: add links to other stacks reviewed (samples mostly, ansible and wp have existing start and forget AMI builds ready - but I figured that was defeating the purpose of the exercise)
+* **T**: add links to other stacks reviewed (samples mostly, ansible and wp have existing start-and-forget AMI builds ready, but I figured that would defeat the purpose of the exercise)
 * **T**: review recipes for potential cleanup, optimization, configurable values
 
 FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is just all I've published so far.
