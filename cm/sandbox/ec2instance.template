@@ -1,0 +1,91 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Description" : "Rean AWS Ansible Wordpress Server Sample",
+	"Resources" : {
+		"WpSecurityGroup" : {
+			"Type" : "AWS::EC2::SecurityGroup",
+			"Properties" : {
+				"GroupDescription" : "Enable SSH and HTTP",
+				"SecurityGroupIngress" : [ {
+					"IpProtocol" : "tcp",
+					"FromPort" : "22",
+					"ToPort" : "22",
+					"CidrIp" : "0.0.0.0/0"
+				}, {
+					"IpProtocol" : "tcp",
+					"FromPort" : "80",
+					"ToPort" : "80",
+					"CidrIp" : "0.0.0.0/0"
+				} ]
+			}
+		},
+		"WpVPC": {
+			"Type": "AWS::EC2::VPC",
+			"Properties": {
+				"EnableDnsSupport": true,
+				"EnableDnsHostnames": true,
+				"InstanceTenancy": "default",
+				"CidrBlock" : "10.0.0.0/24"
+			}
+		},
+		"WpSubnet" : {
+			"Type" : "AWS::EC2::Subnet",
+			"Properties" : {
+				"AvailabilityZone" : "us-east-1b",
+				"CidrBlock" : { "Fn::GetAtt" : [ "WpVPC", "CidrBlock" ]},
+				"MapPublicIpOnLaunch" : true,
+				"VpcId" : { "Ref" : "WpVPC" }
+			}
+		},
+		"WpSecurityGroup" : {
+			"Type" : "AWS::EC2::SecurityGroup",
+			"Properties" : {
+				"GroupDescription" : "Enable SSH and HTTP",
+				"SecurityGroupIngress" : [ {
+					"IpProtocol" : "tcp",
+					"FromPort" : "22",
+					"ToPort" : "22",
+					"CidrIp" : "0.0.0.0/0"
+				}, {
+					"IpProtocol" : "tcp",
+					"FromPort" : "80",
+					"ToPort" : "80",
+					"CidrIp" : "0.0.0.0/0"
+				} ]
+			}
+		},
+		"WpWebServer" : {
+			"Type" : "AWS::EC2::Instance",
+			"Properties" : {
+				"ImageId" : "ami-8997afe0",
+				"AvailabilityZone" : "us-east-1b",
+				"InstanceType" : "t1.micro",
+				"KeyName" : "rean",
+				"SecurityGroupIds" : [ { "Ref" : "WpSecurityGroup" } ],
+				"UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+					"#!/bin/bash -xe\n",
+					"yum update -y\n"
+				]]}}
+			}
+		}
+	},
+	"Parameters" : {
+		"DBPassword" : {
+			"Type" : "String",
+			"Description" : "Wordpress database password (min length 9)",
+			"NoEcho" : true,
+			"AllowedPattern" : ".{9,}",
+			"ConstraintDescription" : "Password must be at least 9 characters"
+		},
+		"WpKeyPair" : {
+			"Description" : "Amazon EC2 Key Pair",
+			"Type" : "AWS::EC2::KeyPair::KeyName"
+		}
+	},
+	"Outputs" : {
+		"WebsiteURL" : {
+			"Value" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WpWebServer", "PublicDnsName" ]}, "/"]] },
+			"Description" : "WordPress Website"
+		}
+	}
+}

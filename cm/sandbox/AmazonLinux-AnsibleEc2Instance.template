@@ -1,0 +1,75 @@
+ {
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Description" : "Rean AWS Ansible Wordpress Sample - Ansible install on default Amazon Linux base image",
+	"Resources" : {
+		"AnsibleVPC" : {
+			"Type" : "AWS::EC2::VPC",
+			"Description" : "Isolated VPC for Ansible + Wordpress",
+			"Properties": {
+				"EnableDnsSupport": true,
+				"EnableDnsHostnames": true,
+				"InstanceTenancy": "default",
+				"CidrBlock" : "10.0.0.0/24"
+			}
+		},
+		"AnsibleSubnet" : {
+			"Type" : "AWS::EC2::Subnet",
+			"Properties" : {
+				"AvailabilityZone" : "us-east-1b",
+				"CidrBlock" : { "Fn::GetAtt" : [ "AnsibleVPC", "CidrBlock" ]},
+				"MapPublicIpOnLaunch" : true,
+				"VpcId" : { "Ref" : "AnsibleVPC" }
+			}
+		},
+		"AnsibleSecurityGroup" : {
+			"Type" : "AWS::EC2::SecurityGroup",
+			"Properties" : {
+				"GroupDescription" : "Enable SSH and HTTPS (tower)",
+				"VpcId" : { "Ref" : "AnsibleVPC" },
+				"SecurityGroupIngress" : [ {
+					"IpProtocol" : "tcp",
+					"FromPort" : "22",
+					"ToPort" : "22",
+					"CidrIp" : "0.0.0.0/0"
+				}, {
+					"IpProtocol" : "tcp",
+					"FromPort" : "443",
+					"ToPort" : "443",
+					"CidrIp" : "0.0.0.0/0"
+				} ]
+			}
+		},
+		"AnsibleServer" : {
+			"Type" : "AWS::EC2::Instance",
+			"Description" : "Amazon Linux base image plus user data to install ansible and git",
+			"Properties" : {
+				"ImageId" : "ami-5fb8c835",
+				"AvailabilityZone" : { "Fn::GetAtt" : [ "AnsibleSubnet", "AvailabilityZone" ] },
+				"InstanceType" : "t1.micro",
+				"KeyName" : { "Ref" : "KeyPair" },
+				"SecurityGroupIds" : [ { "Ref" : "AnsibleSecurityGroup" } ],
+				"SubnetId" : { "Ref" : "AnsibleSubnet" },
+				"UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+					"#!/bin/bash -xe\n",
+					"yum update -y\n",
+					"easy_install pip\n",
+					"pip install ansible\n",
+					"yum install git -y\n"
+				]]}}
+			}
+		}
+	},
+	"Parameters" : {
+		"KeyPair" : {
+			"Type" : "AWS::EC2::KeyPair::KeyName",
+			"Description" : "Amazon EC2 Key Pair"
+		},
+		"Password" : {
+			"Type" : "String",
+			"Description" : "Administrator Password",
+			"NoEcho" : true,
+			"AllowedPattern" : ".{9,}",
+			"ConstraintDescription" : "Password must be at least 9 characters"
+		}
+	}
+}

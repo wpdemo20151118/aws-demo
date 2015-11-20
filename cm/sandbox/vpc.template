@@ -1,0 +1,23 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+	"Resources" : {
+		"WpVPC": {
+			"Type": "AWS::EC2::VPC",
+			"Properties": {
+				"EnableDnsSupport": true,
+				"EnableDnsHostnames": true,
+				"InstanceTenancy": "default",
+				"CidrBlock" : "10.0.0.0/24"
+			}
+		},
+		"WpSubnet" : {
+			"Type" : "AWS::EC2::Subnet",
+			"Properties" : {
+				"AvailabilityZone" : "us-east-1b",
+				"CidrBlock" : { "Fn::GetAtt" : [ "WpVPC", "CidrBlock" ]},
+				"MapPublicIpOnLaunch" : true,
+				"VpcId" : { "Ref" : "WpVPC" }
+			}
+		}
+	}
+}

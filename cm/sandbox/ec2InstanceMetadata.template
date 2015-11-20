@@ -1,0 +1,24 @@
+			"Metadata" : {
+				"AWS::CloudFormation::Init" : {
+					"configSets" : {
+						"install" : [ "configEpel" , "configAnsible" ]
+					},
+					"configEpel" : {
+						"packages" : {
+							"yum" : {
+								"epel-release" : [],
+								"rpm-build" : [],
+								"make" : [],
+								"python2-devel" : []
+							}
+						}
+					},
+					"configAnsible" : {
+						"packages" : {
+							"yum" : {
+								"ansible" : []
+							}
+						}
+					}
+				}
+			},
