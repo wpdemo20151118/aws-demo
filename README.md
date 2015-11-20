@@ -6,6 +6,10 @@ demo scripts &amp; artifacts for automated wp deployment
 2. Configuration data and resources should be stored in version control (Git) and instance-specific information will be supplied during instantiation.
 3. Wordpress instance will exist in an isolated VPC.
 
+##Ansible Server Specifications
+* AMI: ami-b27067da (Latest Ansible Tower
+* -ami-5fb8c835 (Amazon Linux PV)-
+
 ##Web Server Specifications
 * AMI: ami-8997afe0 (CentOS 6.5 Official)
 * Default packages for apache, php, mysql
