@@ -8,12 +8,12 @@ demo scripts &amp; artifacts for automated wp deployment
 
 ## Open Issues
 * **Q**: the password that's supposed to be entered upon use, is it for the wp box or wordpress or for ssh access to either servers or possibly for ansible's 'tower' web tool?
-* **Q**: the response to my first questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM?
+* **Q**: the response to my first questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)
 * **T**: complete wp deployment playbook
 * **T**: test/publish usage instructions
 * **T**: bring server spec & configuration outlines below up to date
 * **T**: add links to other stacks reviewed (samples mostly, ansible and wp have existing start and forget AMI builds ready - but I figured that was defeating the purpose of the exercise)
-* **T**: review recepies for potential cleanup, optimization, configurable values
+* **T**: review recipes for potential cleanup, optimization, configurable values
 
 FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is just all I've published so far.
 
