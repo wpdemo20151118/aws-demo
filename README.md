@@ -17,27 +17,21 @@ demo scripts &amp; artifacts for automated wp deployment
 
 FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is just all I've published so far.
 
-##Ansible Server Specifications
-* AMI-5fb8c835 (Latest Amazon Linux PV)
-* defaults
-  * us-east-1b
-  * t1.micro
-* init
+## Instance Configuration
+
+Role | AMI | Type | Zone
+---|---|---|---
+CM (Ansible) | ami-5fb8c835 (AZL)| t1.micro | us-east-1b
+Web (Wpress) | ami-8997afe0 (Centos)|t1.micro|us-east-1b
+
+##Ansible Server Initialization
   * yum update -y
   * easy_install pip
   * pip install ansible
   * yum install git -y
 
-##Web Server Specifications
-* AMI: ami-8997afe0 (CentOS 6.5 Official)
-* Default packages for apache, php, mysql
-* Instance Type: t1.micro
-* Availability Zone: usa-east-1b
-
-##Ansible Server Setup
+##Ansible Server Initialization
 * yum update -y
-* yum install epel-release -y
-* yum install ansible -y
 
 ## References
 * Ansible http://docs.ansible.com/ansible/playbooks_best_practices.html
