@@ -17,9 +17,7 @@ demo scripts &amp; artifacts for automated wp deployment
 * **T**: review recipes for potential cleanup, optimization, configurable values
 
 ## Powershell
-    PS C:\WINDOWS\system32> New-CFNStack -StackName "ansible-ps-deploy-1" -TemplateURL "https://s3.amazonaws.com/cf-templates-cvfgrhthjkyuiklio/AmazonLinux-AnsibleEc2Instance.template" -Parameters @(@{ParameterKey="KeyPair";ParameterValue="rean"},@{ParameterKey="Password";ParameterValue="0a2z45b67y8"})
-
-FYI: I've had various ansible and wp instances running while I was exploring, and I've been looking in to the configuration options pretty heavily - the CF template is all I've published so far. https://github.com/wpdemo20151118/aws-demo/blob/master/cm/release/CF/AmazonLinux-AnsibleEc2Instance.template
+    PS C:\WINDOWS\system32> New-CFNStack -StackName "ansible-ps-deploy-1" -TemplateURL "[S3URL]" -Parameters @(@{ParameterKey="KeyPair";ParameterValue="rean"},@{ParameterKey="Password";ParameterValue="0a2z45b67y8"})
 
 ## Instance Configuration
 
