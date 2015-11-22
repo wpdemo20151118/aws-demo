@@ -35,7 +35,7 @@ Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b
 ##Ansible Server Initialization
 * yum update -y
 
-## References
+## Resources
 * Ansible http://docs.ansible.com/ansible/playbooks_best_practices.html
 * Chef http://my.safaribooksonline.com/book/web-development/web-services/9781782173632/9dot-bootstrapping-and-auto-configuration/ch09s03_html
 * AWS Cloud Design Patterns  http://my.safaribooksonline.com/book/software-engineering-and-development/patterns/9781782177340/firstchapter
@@ -44,3 +44,4 @@ Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b
 * Wordpress http://codex.wordpress.org/Installing_WordPress
 * EC2 + VPC http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Scenario2.html |  http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html | http://harish11g.blogspot.com/2014/01/Amazon-Virtual-Private-Cloud-VPC-best-practices-tips-for-architecture-migration.html
 * VPC/Networking http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Networking.html
+* Boto http://answersforaws.com/statics/presentations/Ansible-and-AWS.pdf | http://boto.readthedocs.org/en/latest/boto_config_tut.html
