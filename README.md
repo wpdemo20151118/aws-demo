@@ -10,17 +10,19 @@ demo scripts &amp; artifacts for automated wp deployment
 * Using public IPs assigned to instances vs nat
 * Using security groups without network access lists
 
-## Open Issues
-
-* **Q**: ~~should I put the ansible box in a separate subnet from the wp box?~~ (done)
+##Open Issues
 * **Q**: the password that's supposed to be entered upon use, is it for the wp box or wordpress or for ssh access to either servers or possibly for ansible's 'tower' web tool?
-* **Q**: ~~the response to my initial emailed questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)~~
 * **T**: add output to CF stack to display web server address and/or send notification
 * **T**: complete wp deployment playbook
 * **T**: test/publish usage instructions
 * **T**: bring server spec & configuration outlines below up to date
 * **T**: add links to other stacks reviewed (samples mostly, ansible and wp have existing start-and-forget AMI builds ready, but I figured that would defeat the purpose of the exercise)
 * **T**: review recipes for potential cleanup, optimization, configurable values
+* **Q**: ~~should I put the ansible box in a separate subnet from the wp box?~~ (done)
+* **Q**: ~~the response to my initial emailed questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)~~
+
+###AWS (VPC/EC2) Initialization
+CF Stack Template: https://github.com/wpdemo20151118/aws-demo/master/cm/release/CF/VPC-WithSubnets.template
 
 ## Powershell
     PS C:\WINDOWS\system32> New-CFNStack -StackName "ansible-ps-deploy-1" -TemplateURL "[S3URL]" -Parameters @(@{ParameterKey="KeyPair";ParameterValue="rean"},@{ParameterKey="Password";ParameterValue="0a2z45b67y8"})
