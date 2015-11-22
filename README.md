@@ -21,10 +21,10 @@ demo scripts &amp; artifacts for automated wp deployment
 
 ## Instance Configuration
 
-Role | AMI | Type | Zone
----|---|---|---
-CM (Ansible) | ami-5fb8c835 (AZL) PV 64| t1.micro | us-east-1b
-Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b
+Role | AMI | Type | Zone | Subnet | Ports
+---|---|---|---|---|---
+CM (Ansible) | ami-5fb8c835 (AZL) PV 64| t1.micro | us-east-1b|10.0.1.0|22
+Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b|10.0.11.0|22, 80, 443
 
 ##Ansible Server Initialization
   * yum update -y
