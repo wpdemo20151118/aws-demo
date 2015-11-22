@@ -14,7 +14,8 @@ demo scripts &amp; artifacts for automated wp deployment
 
 * **Q**: ~~should I put the ansible box in a separate subnet from the wp box?~~ (done)
 * **Q**: the password that's supposed to be entered upon use, is it for the wp box or wordpress or for ssh access to either servers or possibly for ansible's 'tower' web tool?
-* **Q**: the response to my initial emailed questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)
+* **Q**: ~~the response to my initial emailed questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)~~
+* **T**: add output to CF stack to display web server address and/or send notification
 * **T**: complete wp deployment playbook
 * **T**: test/publish usage instructions
 * **T**: bring server spec & configuration outlines below up to date
@@ -28,17 +29,34 @@ demo scripts &amp; artifacts for automated wp deployment
 
 Role | AMI | Type | Zone | Subnet | Ports
 ---|---|---|---|---|---
-CM (Ansible) | ami-5fb8c835 (AZL) PV 64| t1.micro | us-east-1b|10.0.1.0|22
-Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b|10.0.11.0|22, 80, 443
+CM (Ansible) | ami-5fb8c835 (AZL) PV 64| t1.micro | us-east-1b|10.0.1.0/24|22
+Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b|10.0.11.0/24|22, 80, 443
 
-##Ansible Server Initialization
+###Ansible Server Initialization
   * yum update -y
   * easy_install pip
   * pip install ansible
   * yum install git -y
 
-##Ansible Server Initialization
-* yum update -y
+###Web Server Initialization
+    yum update -y
+    yum install httpd git wget mysql-server php-mysql -y
+    wget  https://raw.githubusercontent.com/wpdemo20151118/aws-demo/master/sys/iptables-web.sh
+    chmod 700 iptables-web.sh
+    ./iptables-web.sh
+    service iptables restart
+    rm iptables-web.sh -f
+    chkconfig httpd on
+    chkconfig mysqld on
+    service httpd stop
+    service httpd start
+    service mysqld stop
+    service mysqld start
+    [secure mysql]
+    service mysqld stop
+    service mysqld start
+    [install wp]
+    
 
 ## Resources
 * Ansible http://docs.ansible.com/ansible/playbooks_best_practices.html
