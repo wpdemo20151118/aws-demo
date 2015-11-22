@@ -64,6 +64,7 @@ Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b|10.0.11.0/24|22, 
     
 
 ## Resources
+* CloudInit [RPM](https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.amzn1.noarch.rpm) or [PIP](https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz)
 * Ansible http://docs.ansible.com/ansible/playbooks_best_practices.html | https://docs.ansible.com/ansible/list_of_cloud_modules.html
 * Boto http://answersforaws.com/statics/presentations/Ansible-and-AWS.pdf | http://boto.readthedocs.org/en/latest/boto_config_tut.html
 * Chef http://my.safaribooksonline.com/book/web-development/web-services/9781782173632/9dot-bootstrapping-and-auto-configuration/ch09s03_html
