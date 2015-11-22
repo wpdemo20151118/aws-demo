@@ -6,10 +6,15 @@ demo scripts &amp; artifacts for automated wp deployment
 2. Configuration data and resources should be stored in version control (Git) and instance-specific information will be supplied during instantiation.
 3. Wordpress and Ansible will exist on separate machine instances in the same new VPC.
 
+##Comments
+* Using public IPs assigned to instances vs nat
+* Using security groups without network access lists
+
 ## Open Issues
-* **Q**: should I put the ansible box in a separate subnet from the wp box?
+
+* **Q**: ~~should I put the ansible box in a separate subnet from the wp box?~~ (done)
 * **Q**: the password that's supposed to be entered upon use, is it for the wp box or wordpress or for ssh access to either servers or possibly for ansible's 'tower' web tool?
-* **Q**: the response to my first questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)
+* **Q**: the response to my initial emailed questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)
 * **T**: complete wp deployment playbook
 * **T**: test/publish usage instructions
 * **T**: bring server spec & configuration outlines below up to date
