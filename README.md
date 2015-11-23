@@ -35,7 +35,8 @@ CF Stack Template: https://github.com/wpdemo20151118/aws-demo/master/cm/release/
 Role | AMI | Type | Zone | Subnet | Ports
 ---|---|---|---|---|---
 CM (Ansible) | ami-5fb8c835 (AZL) PV 64| t1.micro | us-east-1b|10.0.1.0/24|22
-Web (Wpress) | ami-8997afe0 (Centos) PV 64|t1.micro|us-east-1b|10.0.11.0/24|22, 80, 443
+Web (Wpress) | ~~ami-8997afe0 (Centos) PV 64~~ ami-5fb8c835 *|t1.micro|us-east-1b|10.0.11.0/24|22, 80, 443
+** changed to amazon linux to enable UserData from CF
 
 ###Ansible Server Initialization
     yum update -y
