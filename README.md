@@ -12,6 +12,7 @@ demo scripts &amp; artifacts for automated wp deployment
 * I decided to use Ansible becaues it was the preferred method for task 2 but [this pdf](https://s3.amazonaws.com/cloudformation-examples/BoostrappingApplicationsWithAWSCloudFormation.pdf "Boostrapping Applications With AWS CloudFormation") talks about Chef and Puppet as specifically catered to by CF.
 * The version I sent in the email on Friday wasn't properly configured even in the VPC, so I opted to spend the time this weekend getting everything up and running from within the native capabilities of CF as far as I've been able to learn in this short time. **I would like to know if I'm out of time or I should continue with using one of the three CM systems to finish the task.**
 * Both instances are loaded up, with ansible and wordpress respectively, using the UserData command execution feature of CF. I wanted to get the system running functionally for my own sanity before delving in to the next piece of automation regardless of how exited I am to move on to the next step.
+* I was using iptables to restrict to 22,80,443 before I switched to the Amazon Linux AMI. Given the VPC and security groups, I don't know if that extra layer is considered important, but the shell script can be found below in the Web Server Configuration section below.
 
 ##Open Issues
 * **Q**: the password that's supposed to be entered upon use (the CF stack parameters), is it for the wp box or wordpress or for ssh access to either servers or possibly for ansible's 'tower' web tool?
