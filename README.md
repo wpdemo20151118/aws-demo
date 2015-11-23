@@ -25,7 +25,7 @@ demo scripts &amp; artifacts for automated wp deployment
 * **Q**: ~~the response to my initial emailed questions read, in my mind, like "just solve the problem so we can see if you know what you're doing". I totally get that, but I'm still curious, why CF and Ansible? Is it to test the candidate on more services, or would you use CF only for baseline instance/iam/net/security and Ansible for software CM? (Or any other logical/arbitrary delineation)~~
 
 ###AWS (VPC/EC2) Initialization
-CF Stack Template: https://github.com/wpdemo20151118/aws-demo/master/cm/release/CF/VPC-WithSubnets.template
+CF Stack Template: https://github.com/wpdemo20151118/aws-demo/blob/master/cm/release/CF/VPC-WithSubnets.template
 
 ## Powershell
     PS C:\WINDOWS\system32> New-CFNStack -StackName "ansible-ps-deploy-1" -TemplateURL "[S3URL]" -Parameters @(@{ParameterKey="KeyPair";ParameterValue="rean"},@{ParameterKey="Password";ParameterValue="0a2z45b67y8"})
